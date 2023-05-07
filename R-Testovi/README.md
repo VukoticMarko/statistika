@@ -5,7 +5,9 @@
 
 ### primerTesta1.r
 **Test1 (2019_prvi_Rac_Kol.pdf (GRP.E))**: 1) cemu sluzi plot.ecdf. 2) prvi kvartil n-rasp, kvantil hi-kvadrat(qchisq), kvantil t4-rasp(qt), gustina uniformne rasp(dunif), vrednost f exp-rasp(pexp), verovatnoca. 3) sta ne valja tip zadatka
+
 **Test2 (Test1-primer.pdf (GRP.B))**: 1) za intervalni uzorak odrediti: obim, max aprox uzorka, medijalni interval, modus aprox uzorka, aritmeticku sredinu uzorka, standardnu devijaciju uzorka, skewness, treci decil 0.3, realizovanu vrednost empirijske funkcije raspodele fn, qqplot 2) kvantil reda pirsonove hi kvadrat(qchisq), kvantil reda studentove t10(qt), vrednost uniformne(punif), vrednost binomne(pbinom), verovatnoca; 4) napraviti tablicu z->fi(z): koristi se pnorm().
+
 
 ### primerTesta2.r
 **Test1** isto sve ko Test2 iznad. 
