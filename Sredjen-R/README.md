@@ -22,7 +22,7 @@
 ### primerTesta2.r
 **Test1** isto sve ko Test2 iznad.
 
-**Test2 (2019_prvi_Rac_Kol.pdf (GRP.E))**: <br />
+**Test2 (2019_prvi_Rac_Kol.pdf (GRP.F))**: <br />
 **1)** 1. kvantil za n(qnorm), kvantil reda za b(qbinom), vr. f gustine u(dunif), vr. f rasporele e(pexp), verovatnoca; <br />
 **2) ovo je 1. na pdf** <ins>vektor vrednosti</ins>, obim(length), i-ti element var niza(sort(x(imevektora)[i]), modus, nekorigovana i korigovana uzoracka disp, arit sredina(mean), kurtozis, 2. kvartil, kvantil reda, vrednost fje; <br />
 **3) ovo je 2. na pdf** set.seed, frekvencija elementa(table), kovarijansa(cov), nekorigovana standardna dev., outlieri <br />
