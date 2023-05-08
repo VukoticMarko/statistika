@@ -1,7 +1,7 @@
 # FOLIJE https://docs.google.com/document/d/1uiaw3jKkAdddjQO8q2LqI5NXXlMbtgBhZODp2mfkyy8/edit?usp=sharing <br />
 # R-FOLIJE https://docs.google.com/document/d/1J4m4OXj1qA7aod3dAtkl5G-LSdqIA3Rb7ctqertfaAo/edit?usp=sharing
 
-## d-rasp - GUSTINA, q-rasp - KVANTIL, p-rasp - VREDNOST, r-rasp RANDOM-Raspodela
+## d-rasp - GUSTINA, q-rasp - KVANTIL, p-rasp - VREDNOST, r-rasp RANDOM-Raspodela | Kucas distribution u help za imena raspodela u R.
 
 ### DomaciVezbe7.r <br />
 **1)** <ins>slucajan izbor 150 prirodnih brojeva</ins>, granice 10 intervala, frekvencije, modalni i medijalni interval, arit sredina, uzoracka disperzija, empirijska raspodela, histogram i pie plot. <br />
