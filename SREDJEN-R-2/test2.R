@@ -1,3 +1,5 @@
+# Test 2, Gr.A
+
 #1.
 #a) parametru p binomne raspodele
 #b) 18.443%
