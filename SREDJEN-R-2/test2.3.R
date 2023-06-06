@@ -38,3 +38,10 @@ tip<-tips$tip
 x<-dnorm(tip, 3, 1.4)
 plot(x, type="h")
 chisq.test(x)
+
+#3.
+
+#b) generalna korelacija napojnice i visine racuna (0.6757341)
+napojnica<-tips$tip
+visinaRacuna<-tips$total_bill
+cor(napojnica, visinaRacuna)
