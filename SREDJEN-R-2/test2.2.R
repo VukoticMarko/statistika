@@ -7,7 +7,7 @@
 #d) parametarskih
 #e) 0.9996, prihvatiti(valjda)
 
-tips <- read.csv("F:/tips.csv")
+tips <- read.csv("tips.csv")
 nap <- tips$tip[tips$sex == "Male"]
 mean_nap <- mean(nap)
 t.test(nap, mu = 3.5, alternative = "greater")
