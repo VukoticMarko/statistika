@@ -5,43 +5,51 @@
 #a) 20.92569
 #b) 17.41716
 #c) t-test, parametarski
-#d) H0(mv>mr) ?
-#e) p-vrednost: 0.003796, odbacujemo?
+#d) sr.vrednost racuna tokom vikenda=sr.vrednost racuna radnim danima, m1>m2
+#e) 2.793889 
+#f) p-vrednost: 0.002812375, odbacujemo
 
 #prosek racuna vikendom
-vikendSub<-mean(bill[tips$day=="Sat"])
-vikendNed<-mean(bill[tips$day=="Sun"])
-vikend<-(vikendSub+vikendNed)/2
+racuni_vikend <- tips$total_bill[tips$day %in% c("Sat", "Sun")]
+mean(racuni_vikend)
 
 #prosek racuna radnim danima
-rPet<-mean(bill[tips$day=="Fri"])
-rCet<-mean(bill[tips$day=="Thur"])
-rDani<-(rCet+rPet)/2
+racuni_radni_dani <- tips$total_bill[tips$day %in% c("Thur", "Fri")]
+mean_radni_dani <- mean(racuni_radni_dani)
 
-#pravimo vektore  vrednosti racuna za t-testove
-vikendVektor<- c(bill[tips$day=="Sat"], bill[tips$day=="Sun"])
-rDaniVektor<- c(bill[tips$day=="Thur"], bill[tips$day=="Fri"])
-result = t.test(vikendVektor, rDaniVektor)
-result
+#test
+t_test <- t.test(racuni_vikend, racuni_radni_dani, alternative = "greater", var.equal = TRUE)
+
+#realizovana vrednost test statistike
+t_test$statistic
 
 #2.
 
-#a) plot?
-#b) probao sam ovo: intervali<- c(1.5,2.5,3.5,5) ;cut(x,intervali) al ne radi
-#c) parametarski
-#d)
-#e) 5.8962
-#f) ??
-#g) p-value = 1
+#a) nacrtas iz tabele frekvencije
+#b) 0.365
+#c) neparametarski
+#d) Nulta hipoteza glasi da visina napojnica ima normalnu raspodelou
+#e) 36.34
+#f) Pirsonova x^2
+#g) 2.4519, ne prihvata
 
 tip<-tips$tip
-x<-dnorm(tip, 3, 1.4)
-plot(x, type="h")
-chisq.test(x)
+intervali <- c(-Inf, 1.5, 2.5, 3.5, 5, Inf)
+frekvencije <- table(cut(tip, intervali))
+#a)
+tabela_frekvencija <- data.frame(Interval = names(frekvencije), Frekvencija = as.vector(frekvencije))
+#b)
+sum(frekvencije["(2.5,3.5]"]) / sum(frekvencije)
+#e)
+ocekivane_frekvencije <- diff(pnorm(intervali, mean = 3, sd = 1.4)) * sum(frekvencije)
+matrica_kontingencije <- rbind(frekvencije, ocekivane_frekvencije)
+chisq.test(matrica_kontingencije)$statistic
+
 
 #3.
-
+#a) 
+summary(lm(napojnice ~ racun, data = tips))
 #b) generalna korelacija napojnice i visine racuna (0.6757341)
-napojnica<-tips$tip
-visinaRacuna<-tips$total_bill
-cor(napojnica, visinaRacuna)
+#c) 5.12125 
+koef_korelacije <- cor(tips$tip, tips$total_bill)
+procena <- predict(reg_model, newdata = data.frame(racun = 40))
