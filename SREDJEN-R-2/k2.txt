@@ -1,0 +1,211 @@
+# Test 2, Gr.A
+
+#Ucitati fajl tips.csv.
+#1. Testirati hipotezu da procenat napojnica koje su manje od 2$ iznosi 15%.
+#a) U zadatku se testira hipoteza o:
+#b) Na osnovu datog uzorka traˇzeni procenat iznosi:
+#c) Nulta hipoteza ovog testa glasi:
+#d) Test koji se koristi spada u grupu parametarskih / neparametarskih statistickih testova (zaokruziti).
+#e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
+
+#1. RESENJE
+#a) parametru p binomne raspodele
+#b) 18.443%
+#c) H0(p=0.15)
+#d) parametarskih
+#e) 0.1506, prihvatamo, slican je p ko u tekstu zadatka
+
+#f <- file.choose(), pa read.csv(f)
+tips <- read.csv("tips.csv")
+nap <- tips$tip
+n <- length(nap)
+K <- length(nap[nap < 2])
+binom.test(K, n, 0.15)
+
+#2. Ispitati nezavisnost obelezja X i Y cije su realizovane vrednosti uzorka: 11 17 29
+#                                                                             21 8 14
+#a) Test koji se koristi zove se , i spada u grupu parametarskih / neparametarskih testova (zaokruziti).
+#b) Nulta hipoteza ovog testa glasi:
+#c) Realizovana vrednost ove test statistike iznosi:
+#d) Sa kvantilom koje raspodele (i sa koliko stepeni slobode!) se ova vrednost uporeduje?:
+#e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
+
+#2. RESENJE
+#a) Pirsonov hi-kvadrat test nezavisnosti obelezja, neparametarskih
+#b) X i Y su nezavisna
+#c) 9.8302
+#d) Hi-kvadtat raspodela reda 0.95, stepen slobode 2 ??
+#e) 0.007335, ne prihvatamo zbog p<0.05
+
+chisq.test(matrix(c(11, 21, 17, 8, 29, 14), ncol = 3))
+
+#3. Testirati hipotezu o jednakosti srednje vrednosti racuna po danima (ANOVA).
+#a) Nulta hipoteza ovog testa glasi:
+#b) Obelezje koje se ispituje je:
+#c) Test statistika ima raspodelu sa stepeni slobode:
+#d) Realizovana vrednost test statistike iznosi:
+#e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
+
+#3. RESENJE
+#a) H0(m1=m2=m3=m4) - srednje vrednosti racuna po danima jednake
+#b) tips$total_bill - racun
+#c) F (Fiserova) dF, 3, 240
+#d) 2.7675
+#e) 0.04245, ne prihvatamo?
+
+boxplot(total_bill~day, data = tips)
+anova(lm(total_bill~day, data = tips))
+
+
+################################################################################################
+
+
+
+# Test 2, Gr.B
+
+#Ucitati fajl tips.csv.
+#1. Testirati hipotezu da je srednja vrednost napojnica koje su muskarci ostavljali veca od 3.5$.
+#a) U zadatku se testira hipoteza o:
+#b) Srednja vrednost visine napojnica koje su muskarci ostavljali iznosi:
+#c) Nulta hipoteza ovog testa glasi:
+#d) Test koji se koristi spada u grupu parametarskih / neparametarskih statistickih testova (zaokruziti).
+#e) p-vrednost dobijena testom iznosi: , odakle zakljucujemo da je opravdano prihvatiti / odbaciti
+#   hipotezu da je srednja vrednost napojnica koje su muskarci ostavljali ve´ca od 3.5$ (zaokruziti).
+
+#1 RESENJE
+#a) U zadatku se testira hipoteza o srednjoj vrednosti napojnica koje su muškarci ostavljali.
+#b) 3.089618
+#c) Nulta hipoteza ovog testa glasi da je srednja vrednost napojnica koje su muškarci ostavljali manja ili jednaka 3.5 dolara.
+#d) parametarskih
+#e) 0.9996, prihvatiti(valjda)
+
+tips <- read.csv("tips.csv")
+nap <- tips$tip[tips$sex == "Male"]
+mean_nap <- mean(nap)
+t.test(nap, mu = 3.5, alternative = "greater")
+
+#2. Kolmogorov-Smirnov testom testirati hipotezu o saglasnosti iznosa racuna sa normalnom
+#   raspodelom N (20, 9).
+#a) Kolmogorov-Smirnov test spada u grupu parametarskih / neparametarskih testova (zaokruziti).
+#b) Nulta hipoteza ovog testa glasi:
+#c) Vrednost dn iznosi:
+#d) Realizovana vrednost test statistike iznosi i ona se uporeduje sa kvantilom λ0.95 = _____
+#e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
+
+#2. RESENJE
+#a) neparametarski
+#b) Empirijska distribucija podataka odgovara normalnoj raspodeli N(20, 9)
+#c) 1.994
+#d) 0.1276, 1.36 ( ako je lambda 0.99 onda je 1.63)
+#e) 0.00070, ne prihvata (P<0.05)
+
+racun<-tips$total_bill
+ks_test <- ks.test(racun, "pnorm", mean = 20, sd = 9)
+c) dn<-ks_test$statistic * sqrt(length(racun))
+d) realizovana_vrednost <- ks_test$statistic
+e) p_vrednost <- ks_test$p.value
+
+#3. Testirati hipotezu o jednakosti srednje vrednosti visine napojnica po danima (ANOVA).
+#a) Nulta hipoteza ovog testa glasi:
+#b) Nivoi faktora po kom se radi ANOVA su:
+#c) Test statistika ima raspodelu sa stepeni slobode:
+#d) Realizovana vrednost test statistike iznosi:
+#e) p-vrednost dobijena testom iznosi: , sto znaci da postoje / ne postoje (zaokruziti) statisticki
+#   znacajne razlike izmedu nivoa.
+
+#3. RESENJE
+#a) H0(m1=m2=m3=m4) - srednje vrednosti visine napojnica po danima su jednake
+#b) Nivoi faktora po kojima se radi ANOVA su dani (day - Sun, Sat, Thur, Fri).
+#c) F (Fiserova), 3
+#d) 1.6724
+#e) 0.1736, ne postoje (DA LI JE NULTA HIP. PRIHVACENA(P>0.05) -> JESTE ONDA NE POSTOJE RAZLIKE)
+
+
+tip <- tips$tip
+boxplot(tip~day, data = tips)
+anova(lm(tip~day, data = tips))
+
+#################################################################################################
+
+# Test 2, Gr.C
+
+#Ucitati fajl tips.csv.
+#1. Testirati hipotezu da je srednja vrednost racuna tokom vikenda veca nego radnim danima,
+#   pod pretpostavkom da su varijanse jednake.
+#a) Srednja vrednost iznosa racuna tokom vikenda je:
+#b) Srednja vrednost iznosa racuna radnim danima je:
+#c) Test koji se koristi za uporedivanje srednjih vrednosti racuna tokom vikenda i radnim danima zove se, i spada
+#   u grupu parametarskih / neparametarskih testova (zaokruziti).
+#d) Nulta hipoteza ovog testa glasi: a alternativna hipoteza je:
+#e) Realizovana vrednost test statistike iznosi:
+#f) p-vrednost dobijena testom iznosi: , odakle zakljucujemo da je opravdano prihvatiti / odbaciti
+#   hipotezu da je srednja vrednost racuna tokom vikenda veca nego radnim danima (zaokruziti).
+
+#1. RESENJE
+#a) 20.92569
+#b) 17.41716
+#c) t-test, parametarski
+#d) sr.vrednost racuna tokom vikenda=sr.vrednost racuna radnim danima, m1>m2
+#e) 2.793889 
+#f) p-vrednost: 0.002812375, odbacujemo
+
+#prosek racuna vikendom
+racuni_vikend <- tips$total_bill[tips$day %in% c("Sat", "Sun")]
+mean(racuni_vikend)
+
+#prosek racuna radnim danima
+racuni_radni_dani <- tips$total_bill[tips$day %in% c("Thur", "Fri")]
+mean_radni_dani <- mean(racuni_radni_dani)
+
+#test
+t_test <- t.test(racuni_vikend, racuni_radni_dani, alternative = "greater", var.equal = TRUE)
+
+#realizovana vrednost test statistike
+t_test$statistic
+
+#2. χ2 -testom ispitati saglasnost visine napojnica sa normalnom raspodelom N (3, 1.4). Uzorak
+#   podeliti na pet intervala koristeci deobne taˇke 1.5,2.5,3.5 i 5.
+#a) Nacrtati tabelu frekvencija za date intervale.
+#b) Kolika je verovatnoca da iznos napojnice pripada intervalu (2.5, 3.5]? .
+#c) χ2-test spada u grupu parametarskih / neparametarskih testova (zaokruziti).
+#d) Nulta hipoteza ovog testa glasi:
+#e) Realizovana vrednost test statistike iznosi:
+#f) Sa kvantilom koje raspodele (i sa koliko stepeni slobode!) se ova vrednost uporeduje?:
+#g) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
+
+
+#2. RESENJE
+#a) nacrtas iz tabele frekvencije
+#b) 0.365
+#c) neparametarski
+#d) Nulta hipoteza glasi da visina napojnica ima normalnu raspodelou
+#e) 36.34
+#f) Pirsonova x^2
+#g) 2.4519, ne prihvata
+
+tip<-tips$tip
+intervali <- c(-Inf, 1.5, 2.5, 3.5, 5, Inf)
+frekvencije <- table(cut(tip, intervali))
+#a)
+tabela_frekvencija <- data.frame(Interval = names(frekvencije), Frekvencija = as.vector(frekvencije))
+#b)
+sum(frekvencije["(2.5,3.5]"]) / sum(frekvencije)
+#e)
+ocekivane_frekvencije <- diff(pnorm(intervali, mean = 3, sd = 1.4)) * sum(frekvencije)
+matrica_kontingencije <- rbind(frekvencije, ocekivane_frekvencije)
+chisq.test(matrica_kontingencije)$statistic
+
+#3. Naci koeficijent korelacije visine napojnice u zavisnosti od iznosa racuna. Ako racun iznosi
+#   40$, kolika ocekujemo da ce biti napojnica?
+#a) Jednacina linearne regresije je:
+#b) Koeficijent korelacije iznosi:
+#c) Procena iz zadatka iznosi:
+
+#3. RESENJE
+#a)
+summary(lm(napojnice ~ racun, data = tips))
+#b) generalna korelacija napojnice i visine racuna (0.6757341)
+#c) 5.12125 
+koef_korelacije <- cor(tips$tip, tips$total_bill)
+procena <- predict(reg_model, newdata = data.frame(racun = 40))
+
