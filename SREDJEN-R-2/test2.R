@@ -19,7 +19,7 @@ binom.test(K, n, 0.15)
 #b) X i Y su nezavisna
 #c) 9.8302
 #d) Hi-kvadtat raspodela reda 0.95, stepen slobode 2 ??
-#e) 0.007335, ne prihvatamo?
+#e) 0.007335, ne prihvatamo zbog p<0.05
 
 chisq.test(matrix(c(11, 21, 17, 8, 29, 14), ncol = 3))
 
