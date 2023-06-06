@@ -26,3 +26,15 @@ result
 
 #2.
 
+#a) plot?
+#b) probao sam ovo: intervali<- c(1.5,2.5,3.5,5) ;cut(x,intervali) al ne radi
+#c) parametarski
+#d)
+#e) 5.8962
+#f) ??
+#g) p-value = 1
+
+tip<-tips$tip
+x<-dnorm(tip, 3, 1.4)
+plot(x, type="h")
+chisq.test(x)
