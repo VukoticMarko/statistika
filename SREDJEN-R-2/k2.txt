@@ -24,7 +24,7 @@ binom.test(K, n, 0.15)
 
 #2. Ispitati nezavisnost obelezja X i Y cije su realizovane vrednosti uzorka: 11 17 29
 #                                                                             21 8 14
-#a) Test koji se koristi zove se , i spada u grupu parametarskih / neparametarskih testova (zaokruziti).
+#a) Test koji se koristi zove se: , i spada u grupu parametarskih / neparametarskih testova (zaokruziti).
 #b) Nulta hipoteza ovog testa glasi:
 #c) Realizovana vrednost ove test statistike iznosi:
 #d) Sa kvantilom koje raspodele (i sa koliko stepeni slobode!) se ova vrednost uporeduje?:
