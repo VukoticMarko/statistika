@@ -1,7 +1,18 @@
 # Test 2, Gr.C
 
-#1.
+#Ucitati fajl tips.csv.
+#1. Testirati hipotezu da je srednja vrednost racuna tokom vikenda veca nego radnim danima,
+#   pod pretpostavkom da su varijanse jednake.
+#a) Srednja vrednost iznosa racuna tokom vikenda je:
+#b) Srednja vrednost iznosa racuna radnim danima je:
+#c) Test koji se koristi za uporedivanje srednjih vrednosti racuna tokom vikenda i radnim danima zove se, i spada
+#   u grupu parametarskih / neparametarskih testova (zaokruziti).
+#d) Nulta hipoteza ovog testa glasi: a alternativna hipoteza je:
+#e) Realizovana vrednost test statistike iznosi:
+#f) p-vrednost dobijena testom iznosi: , odakle zakljucujemo da je opravdano prihvatiti / odbaciti
+#   hipotezu da je srednja vrednost racuna tokom vikenda veca nego radnim danima (zaokruziti).
 
+#1. RESENJE
 #a) 20.92569
 #b) 17.41716
 #c) t-test, parametarski
@@ -23,8 +34,18 @@ t_test <- t.test(racuni_vikend, racuni_radni_dani, alternative = "greater", var.
 #realizovana vrednost test statistike
 t_test$statistic
 
-#2.
+#2. χ2 -testom ispitati saglasnost visine napojnica sa normalnom raspodelom N (3, 1.4). Uzorak
+#   podeliti na pet intervala koristeci deobne taˇke 1.5,2.5,3.5 i 5.
+#a) Nacrtati tabelu frekvencija za date intervale.
+#b) Kolika je verovatnoca da iznos napojnice pripada intervalu (2.5, 3.5]? .
+#c) χ2-test spada u grupu parametarskih / neparametarskih testova (zaokruziti).
+#d) Nulta hipoteza ovog testa glasi:
+#e) Realizovana vrednost test statistike iznosi:
+#f) Sa kvantilom koje raspodele (i sa koliko stepeni slobode!) se ova vrednost uporeduje?:
+#g) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
 
+
+#2. RESENJE
 #a) nacrtas iz tabele frekvencije
 #b) 0.365
 #c) neparametarski
@@ -45,9 +66,14 @@ ocekivane_frekvencije <- diff(pnorm(intervali, mean = 3, sd = 1.4)) * sum(frekve
 matrica_kontingencije <- rbind(frekvencije, ocekivane_frekvencije)
 chisq.test(matrica_kontingencije)$statistic
 
+#3. Naci koeficijent korelacije visine napojnice u zavisnosti od iznosa racuna. Ako racun iznosi
+#   40$, kolika ocekujemo da ce biti napojnica?
+#a) Jednacina linearne regresije je:
+#b) Koeficijent korelacije iznosi:
+#c) Procena iz zadatka iznosi:
 
-#3.
-#a) 
+#3. RESENJE
+#a)
 summary(lm(napojnice ~ racun, data = tips))
 #b) generalna korelacija napojnice i visine racuna (0.6757341)
 #c) 5.12125 
