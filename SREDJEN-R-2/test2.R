@@ -18,7 +18,7 @@ binom.test(K, n, 0.15)
 #a) Pirsonov hi-kvadrat test nezavisnosti obelezja, neparametarskih
 #b) X i Y su nezavisna
 #c) 9.8302
-#d) Hi-kvadtat raspodela reda 0.95, stepen slobode 2
+#d) Hi-kvadtat raspodela reda 0.95, stepen slobode 2 ??
 #e) 0.007335, ne prihvatamo?
 
 chisq.test(matrix(c(11, 21, 17, 8, 29, 14), ncol = 3))
