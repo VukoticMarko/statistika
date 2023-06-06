@@ -3,7 +3,7 @@
 #Ucitati fajl tips.csv.
 #1. Testirati hipotezu da procenat napojnica koje su manje od 2$ iznosi 15%.
 #a) U zadatku se testira hipoteza o:
-#b) Na osnovu datog uzorka traˇzeni procenat iznosi:
+#b) Na osnovu datog uzorka trazeni procenat iznosi:
 #c) Nulta hipoteza ovog testa glasi:
 #d) Test koji se koristi spada u grupu parametarskih / neparametarskih statistickih testova (zaokruziti).
 #e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
