@@ -89,7 +89,7 @@ t.test(nap, mu = 3.5, alternative = "greater")
 #a) Kolmogorov-Smirnov test spada u grupu parametarskih / neparametarskih testova (zaokruziti).
 #b) Nulta hipoteza ovog testa glasi:
 #c) Vrednost dn iznosi:
-#d) Realizovana vrednost test statistike iznosi i ona se uporeduje sa kvantilom λ0.95 = _____
+#d) Realizovana vrednost test statistike iznosi: i ona se uporeduje sa kvantilom λ0.95 = _____
 #e) p-vrednost dobijena testom iznosi: , sto znaci da se H0 prihvata / ne prihvata (zaokruziti).
 
 #2. RESENJE
